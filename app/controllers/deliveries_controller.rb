@@ -1,8 +1,6 @@
 class DeliveriesController < ApplicationController
   def index
-    
-
-     @waiting_on = Delivery.where(user_id: current_user.id, arrived: [false, nil])
+    @waiting_on = Delivery.where(user_id: current_user.id, arrived: [false, nil])
     @received = Delivery.where(user_id: current_user.id, arrived: true)
 
     render({ :template => "deliveries/index" })
@@ -43,7 +41,7 @@ class DeliveriesController < ApplicationController
       return
     end
 
-    # Update the 'arrived' boolean if submitted
+    
     if params[:arrived] == "true"
       @the_delivery.arrived = true
     end
